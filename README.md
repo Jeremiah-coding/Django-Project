@@ -1,44 +1,71 @@
 # Django Project
 
-This project is a Dockerized Django setup with three apps:
+University Course Directory built with Django MVT, Docker, and PostgreSQL.
 
-- departments
-- courses
-- students
+## Project Structure
+
+- `university_portal/`
+- `departments/`
+- `courses/`
+- `students/`
+- `templates/`
 
 ## Requirements
 
 - Docker Desktop
 - Docker Compose
 
-## Run with Docker
+## How To Run The Project
 
 ```bash
-docker compose up --build
+docker compose up --build -d
 ```
 
-Open http://localhost:8000
+Open:
 
-## App Endpoints
+- http://localhost:8000/
 
-- http://localhost:8000/departments/
-- http://localhost:8000/courses/
-- http://localhost:8000/students/
-
-## Admin Access
-
-- URL: http://localhost:8000/admin/
-- Superuser username: admin
-- Password: set locally when running createsuperuser (do not commit plaintext passwords)
-
-To reset the admin password:
-
-```bash
-docker compose exec web python manage.py changepassword admin
-```
-
-## Stop
+To stop:
 
 ```bash
 docker compose down
 ```
+
+## How To Create Migrations
+
+```bash
+docker compose exec web python manage.py makemigrations
+```
+
+## How To Migrate The Database
+
+```bash
+docker compose exec web python manage.py migrate
+```
+
+## How To Create A Superuser
+
+```bash
+docker compose exec web python manage.py createsuperuser
+```
+
+Non-interactive example:
+
+```bash
+docker compose exec web python manage.py createsuperuser --noinput --username admin --email admin@example.com
+```
+
+## Available Pages
+
+- Home page: `http://localhost:8000/`
+- Department list: `http://localhost:8000/departments/`
+- Department detail: `http://localhost:8000/departments/<department_id>/`
+- Course detail: `http://localhost:8000/courses/<course_id>/`
+- Admin panel: `http://localhost:8000/admin/`
+
+Note: `http://localhost:8000/courses/` resolves into course detail flow in this strict guideline setup.
+
+## Admin Access Note
+
+- Username used in this project: `admin`
+- Keep passwords local only. Do not commit real secrets to Git.

@@ -23,6 +23,11 @@ media/
 .env
 .env.*
 
+# Database dump files
+*.sql
+*.dump
+*.bak
+
 # IDE files
 .vscode/
 .idea/
