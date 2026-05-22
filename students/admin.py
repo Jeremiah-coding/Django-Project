@@ -1,3 +1,5 @@
 from django.contrib import admin
+from . import models
 
-# Register your models here.
+if hasattr(models, "Student"):
+	admin.site.register(models.Student)
