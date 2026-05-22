@@ -1,12 +1,13 @@
-from django.http import JsonResponse
+from django.shortcuts import get_object_or_404, render
+
+from .models import Department
 
 
-def list_departments(_request):
-	return JsonResponse(
-		{
-			"app": "departments",
-			"items": ["Engineering", "Business", "Arts"],
-		}
-	)
+def list_departments(request):
+	departments = Department.objects.all().order_by("code")
+	return render(request, "departments/list.html", {"departments": departments})
 
-# Create your views here.
+
+def department_detail(request, department_id):
+	department = get_object_or_404(Department, pk=department_id)
+	return render(request, "departments/detail.html", {"department": department})

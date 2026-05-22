@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Portal | Departments</title>
+    <style>
+        :root {
+            --navy: #0b2441;
+            --blue: #113d6f;
+            --gold: #c8a760;
+            --ink: #1a2433;
+            --white: #ffffff;
+            --border: #d6dde7;
+        }
+
+        body {
+            margin: 0;
+            font-family: Cambria, "Times New Roman", Times, serif;
+            color: var(--ink);
+            background: linear-gradient(180deg, #eef3f9 0%, #f9fbfd 100%);
+        }
+
+        .masthead {
+            background: var(--navy);
+            color: var(--white);
+            border-bottom: 4px solid var(--gold);
+            padding: 16px 20px;
+        }
+
+        .masthead-inner {
+            max-width: 980px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+            letter-spacing: 0.3px;
+        }
+
+        .container {
+            max-width: 980px;
+            margin: 36px auto;
+            padding: 30px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            box-shadow: 0 14px 28px rgba(11, 36, 65, 0.09);
+        }
+
+        .kicker {
+            margin: 0;
+            color: var(--blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.82rem;
+            font-weight: 700;
+        }
+
+        h1 {
+            margin: 12px 0 8px;
+            color: var(--navy);
+            font-size: 1.9rem;
+        }
+
+        .subtitle {
+            margin: 0 0 24px;
+            line-height: 1.6;
+            font-size: 1.03rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.98rem;
+            background: #fff;
+        }
+
+        thead th {
+            text-align: left;
+            background: #f4f7fb;
+            color: #22344b;
+            border-bottom: 2px solid var(--border);
+            padding: 12px 10px;
+        }
+
+        tbody td {
+            border-bottom: 1px solid #e8edf4;
+            padding: 12px 10px;
+        }
+
+        tbody tr:hover {
+            background: #f9fbfe;
+        }
+
+        a {
+            color: var(--blue);
+            text-decoration: none;
+            font-weight: 600;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        a:hover {
+            color: var(--navy);
+            text-decoration: underline;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            background: var(--blue);
+            color: var(--white);
+            text-decoration: none;
+            padding: 9px 14px;
+            border-radius: 6px;
+            font-size: 0.92rem;
+        }
+
+        .back-link:hover {
+            background: var(--navy);
+            text-decoration: none;
+        }
+
+        .empty {
+            padding: 14px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: #f8fbff;
+        }
+
+        @media (max-width: 720px) {
+            .container {
+                margin: 18px 12px;
+                padding: 22px;
+            }
+
+            table,
+            thead,
+            tbody,
+            th,
+            td,
+            tr {
+                display: block;
+            }
+
+            thead {
+                display: none;
+            }
+
+            tbody tr {
+                border: 1px solid #e8edf4;
+                border-radius: 6px;
+                padding: 10px;
+                margin-bottom: 12px;
+                background: #fff;
+            }
+
+            tbody td {
+                border: none;
+                padding: 6px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="masthead">
+        <div class="masthead-inner">University Academic Records Portal</div>
+    </header>
+
+    <main class="container">
+        <p class="kicker">Academic Structure</p>
+        <h1>Departments</h1>
+        <p class="subtitle">Review the list of registered university departments and proceed to each detail page for additional information.</p>
+
+        {% if departments %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Department Name</th>
+                        <th>Department Code</th>
+                        <th>Building Name</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for department in departments %}
+                        <tr>
+                            <td>{{ department.name }}</td>
+                            <td>{{ department.code }}</td>
+                            <td>{{ department.building_name }}</td>
+                            <td><a href="{% url 'department-detail' department.id %}">View Department</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <div class="empty">No departments are currently available.</div>
+        {% endif %}
+
+        <a class="back-link" href="/">Return to Home</a>
+    </main>
+</body>
+</html>
