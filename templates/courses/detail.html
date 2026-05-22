@@ -90,13 +90,15 @@
     </header>
 
     <main class="container">
-        <h1>{{ course.course_code }} - {{ course.title }}</h1>
+        <h1>Course Detail</h1>
         <div class="meta">
-            <div class="label">Department</div><div>{{ course.department.name }} ({{ course.department.code }})</div>
+            <div class="label">Course Title</div><div>{{ course.title }}</div>
+            <div class="label">Course Code</div><div>{{ course.course_code }}</div>
+            <div class="label">Description</div><div>{{ course.description }}</div>
             <div class="label">Credits</div><div>{{ course.credits }}</div>
             <div class="label">Level</div><div>{{ course.level }}</div>
-            <div class="label">Status</div><div>{% if course.is_active %}Active{% else %}Inactive{% endif %}</div>
-            <div class="label">Description</div><div>{{ course.description }}</div>
+            <div class="label">Department Name</div><div>{{ course.department.name }}</div>
+            <div class="label">Active Status</div><div>{% if course.is_active %}Active{% else %}Inactive{% endif %}</div>
         </div>
 
         <div class="actions">
