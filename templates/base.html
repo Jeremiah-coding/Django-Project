@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}University Portal{% endblock %}</title>
+    <style>
+        :root {
+            --navy: #0b2441;
+            --blue: #113d6f;
+            --gold: #c8a760;
+            --ink: #1a2433;
+            --white: #ffffff;
+            --border: #d6dde7;
+            --surface: #f8fbff;
+        }
+
+        body {
+            margin: 0;
+            font-family: Cambria, "Times New Roman", Times, serif;
+            color: var(--ink);
+            background: linear-gradient(180deg, #eef3f9 0%, #f9fbfd 100%);
+        }
+
+        .masthead {
+            background: var(--navy);
+            color: var(--white);
+            border-bottom: 4px solid var(--gold);
+            padding: 14px 20px;
+        }
+
+        .masthead-inner {
+            max-width: 980px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .site-name {
+            font-size: 1.05rem;
+            letter-spacing: 0.3px;
+        }
+
+        .nav {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            padding: 7px 11px;
+            border-radius: 6px;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 0.88rem;
+            font-weight: 600;
+        }
+
+        .nav a:hover {
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .container {
+            max-width: 980px;
+            margin: 36px auto;
+            padding: 30px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            box-shadow: 0 14px 28px rgba(11, 36, 65, 0.09);
+        }
+
+        .kicker {
+            margin: 0;
+            color: var(--blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.82rem;
+            font-weight: 700;
+        }
+
+        h1 {
+            margin: 12px 0 10px;
+            color: var(--navy);
+            font-size: 1.95rem;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 14px;
+            background: var(--blue);
+            color: var(--white);
+            text-decoration: none;
+            padding: 9px 14px;
+            border-radius: 6px;
+            font-size: 0.92rem;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 600;
+        }
+
+        .button:hover {
+            background: var(--navy);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.98rem;
+            margin-top: 10px;
+            background: #fff;
+        }
+
+        thead th {
+            text-align: left;
+            background: #f4f7fb;
+            color: #22344b;
+            border-bottom: 2px solid var(--border);
+            padding: 12px 10px;
+        }
+
+        tbody td {
+            border-bottom: 1px solid #e8edf4;
+            padding: 12px 10px;
+        }
+
+        tbody tr:hover {
+            background: var(--surface);
+        }
+
+        .empty {
+            margin-top: 12px;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: var(--surface);
+        }
+
+        @media (max-width: 720px) {
+            .container {
+                margin: 18px 12px;
+                padding: 22px;
+            }
+
+            h1 {
+                font-size: 1.55rem;
+            }
+        }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <header class="masthead">
+        <div class="masthead-inner">
+            <div class="site-name">University Academic Records Portal</div>
+            <nav class="nav">
+                <a href="/">Home</a>
+                <a href="/departments/">Departments</a>
+                <a href="/courses/">Courses</a>
+                <a href="/admin/">Admin Panel</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

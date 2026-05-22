@@ -5,7 +5,7 @@ from .models import Department
 
 def list_departments(request):
 	departments = Department.objects.all().order_by("code")
-	return render(request, "departments/list.html", {"departments": departments})
+	return render(request, "departments/department_list.html", {"departments": departments})
 
 
 def department_detail(request, department_id):
@@ -13,6 +13,6 @@ def department_detail(request, department_id):
 	courses = department.courses.all().order_by("course_code")
 	return render(
 		request,
-		"departments/detail.html",
+		"departments/department_detail.html",
 		{"department": department, "courses": courses},
 	)

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}University Portal | Course Detail{% endblock %}
+
+{% block extra_css %}
+    <style>
+        .meta {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 8px 14px;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .label {
+            font-weight: 700;
+            color: #22344b;
+        }
+
+        @media (max-width: 640px) {
+            .meta {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <p class="kicker">Course Profile</p>
+    <h1>Course Detail</h1>
+
+    <div class="meta">
+        <div class="label">Course Title</div><div>{{ course.title }}</div>
+        <div class="label">Course Code</div><div>{{ course.course_code }}</div>
+        <div class="label">Description</div><div>{{ course.description }}</div>
+        <div class="label">Credits</div><div>{{ course.credits }}</div>
+        <div class="label">Level</div><div>{{ course.level }}</div>
+        <div class="label">Department Name</div><div>{{ course.department.name }}</div>
+        <div class="label">Active Status</div><div>{% if course.is_active %}Active{% else %}Inactive{% endif %}</div>
+    </div>
+
+    <a class="button" href="/departments/{{ course.department.id }}/">Back to Department</a>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}University Portal | Department Detail{% endblock %}
+
+{% block extra_css %}
+    <style>
+        .meta {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 8px 14px;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .label {
+            font-weight: 700;
+            color: #22344b;
+        }
+
+        h2 {
+            margin: 30px 0 12px;
+            color: var(--navy);
+            font-size: 1.35rem;
+        }
+
+        @media (max-width: 640px) {
+            .meta {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <p class="kicker">Department Profile</p>
+    <h1>{{ department.name }}</h1>
+
+    <div class="meta">
+        <div class="label">Department Code</div><div>{{ department.code }}</div>
+        <div class="label">Building Name</div><div>{{ department.building_name }}</div>
+        <div class="label">Description</div><div>{{ department.description }}</div>
+        <div class="label">Created At</div><div>{{ department.created_at }}</div>
+    </div>
+
+    <h2>Courses in This Department</h2>
+    {% if courses %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Course Code</th>
+                    <th>Course Title</th>
+                    <th>Credits</th>
+                    <th>Course Detail</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for course in courses %}
+                    <tr>
+                        <td>{{ course.course_code }}</td>
+                        <td>{{ course.title }}</td>
+                        <td>{{ course.credits }}</td>
+                        <td><a href="{% url 'course-detail' course.id %}">View Course</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="empty">No courses are currently associated with this department.</div>
+    {% endif %}
+
+    <a class="button" href="/departments/">Back to Departments</a>
+{% endblock %}
