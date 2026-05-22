@@ -25,6 +25,18 @@ Open http://localhost:8000
 - http://localhost:8000/courses/
 - http://localhost:8000/students/
 
+## Admin Access
+
+- URL: http://localhost:8000/admin/
+- Superuser username: admin
+- Password: set locally when running createsuperuser (do not commit plaintext passwords)
+
+To reset the admin password:
+
+```bash
+docker compose exec web python manage.py changepassword admin
+```
+
 ## Stop
 
 ```bash
