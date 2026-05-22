@@ -1,11 +1,13 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 
 from .models import Course
 
 
 def list_courses(request):
-	courses = Course.objects.select_related("department").all().order_by("course_code")
-	return render(request, "courses/course_list.html", {"courses": courses})
+	first_course = Course.objects.order_by("course_code").first()
+	if first_course:
+		return redirect("course-detail", course_id=first_course.id)
+	return redirect("departments-list")
 
 
 def course_detail(request, course_id):
