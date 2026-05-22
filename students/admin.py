@@ -1,5 +1,4 @@
 from django.contrib import admin
-from . import models
+from .models import Student
 
-if hasattr(models, "Student"):
-	admin.site.register(models.Student)
+admin.site.register(Student)
