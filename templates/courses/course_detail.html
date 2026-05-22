@@ -39,5 +39,5 @@
         <div class="label">Active Status</div><div>{% if course.is_active %}Active{% else %}Inactive{% endif %}</div>
     </div>
 
-    <a class="button" href="/departments/{{ course.department.id }}/">Back to Department</a>
+    <a class="button" href="{% url 'department-detail' course.department.id %}">Back to Department</a>
 {% endblock %}

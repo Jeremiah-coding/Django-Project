@@ -162,10 +162,10 @@
         <div class="masthead-inner">
             <div class="site-name">University Academic Records Portal</div>
             <nav class="nav">
-                <a href="/">Home</a>
-                <a href="/departments/">Departments</a>
-                <a href="/courses/">Courses</a>
-                <a href="/admin/">Admin Panel</a>
+                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'departments-list' %}">Departments</a>
+                <a href="{% url 'courses-list' %}">Courses</a>
+                <a href="{% url 'admin:index' %}">Admin Panel</a>
             </nav>
         </div>
     </header>

@@ -7,8 +7,8 @@
     <h1>Welcome to the University Portal</h1>
     <p>This portal supports core academic administration across departments and courses. It provides a centralized and reliable foundation for managing institutional data.</p>
 
-    <a class="button" href="/departments/">View Departments</a>
-    <a class="button" href="/courses/">View Courses</a>
+    <a class="button" href="{% url 'departments-list' %}">View Departments</a>
+    <a class="button" href="{% url 'courses-list' %}">View Courses</a>
 
     <p style="margin-top: 22px; color: #4a5668;">Use the navigation links above to review department listings and course offerings.</p>
 {% endblock %}
