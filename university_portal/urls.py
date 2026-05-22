@@ -15,12 +15,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.http import JsonResponse
+from django.shortcuts import render
 from django.urls import include, path
 
 
 def home(_request):
-    return JsonResponse({"message": "Django project is running"})
+    return render(_request, "home.html")
 
 urlpatterns = [
     path('', home, name='home'),
